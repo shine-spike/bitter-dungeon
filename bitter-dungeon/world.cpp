@@ -9,8 +9,6 @@
 #include "world.h"
 
 class World {
-    char [<#instance variables#>
     
 public:
-    <#member functions#>
 };
