@@ -13,10 +13,6 @@
 /* Begin PBXFileReference section */
 		E23D429D1B4A0102004BBCC8 /* bitter-dungeon */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "bitter-dungeon"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E23D42A01B4A0102004BBCC8 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		E23D42A31B4A0103004BBCC8 /* cute_image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cute_image.jpg; sourceTree = "<group>"; };
-		E23D42A41B4A0103004BBCC8 /* nice_music.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = nice_music.ogg; sourceTree = "<group>"; };
-		E23D42A51B4A0103004BBCC8 /* sansation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sansation.ttf; sourceTree = "<group>"; };
-		E23D42A61B4A0103004BBCC8 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,20 +46,8 @@
 			isa = PBXGroup;
 			children = (
 				E23D42A01B4A0102004BBCC8 /* main.cpp */,
-				E23D42A21B4A0103004BBCC8 /* Resources */,
 			);
 			path = "bitter-dungeon";
-			sourceTree = "<group>";
-		};
-		E23D42A21B4A0103004BBCC8 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				E23D42A31B4A0103004BBCC8 /* cute_image.jpg */,
-				E23D42A41B4A0103004BBCC8 /* nice_music.ogg */,
-				E23D42A51B4A0103004BBCC8 /* sansation.ttf */,
-				E23D42A61B4A0103004BBCC8 /* icon.png */,
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,6 +239,7 @@
 				E23D42AB1B4A0103004BBCC8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
