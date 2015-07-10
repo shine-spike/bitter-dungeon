@@ -8,7 +8,4 @@
 
 #include "world.h"
 
-class World {
-    
-public:
-};
+class World;
