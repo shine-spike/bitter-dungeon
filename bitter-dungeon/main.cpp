@@ -22,126 +22,85 @@
 #include <unistd.h>
 #include <fstream>
 #include <iostream>
-#include <world.h>
-
+#define max_dimension 100
 
 constexpr int windowWidth = 640, windowHeight = 640;
 
+class Block{
+    int type;
+    sf::Sprite sprite;
+public:
+    Block (int a, sf::Sprite b) {type=a; sprite=b;}
+    Block () {}
+    int getType(){
+        return type;
+    }
+    sf::Sprite getSprite(){
+        return sprite;
+    }
+    void setSprite(sf::Sprite set){
+        sprite = set;
+    }
+    void setType(int ntype){
+        type = ntype;
+    }
+};
+
 int main(int argc, char const** argv)
 {
-    // Create the main window
+    // Create the main window and other important variables
     sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Dungeon");
     window.setFramerateLimit(30);
     window.setVerticalSyncEnabled(true);
+    Block blocks[max_dimension][max_dimension];
+    std::ifstream tilefile("world1.txt");
+    std::string texturefile;
+    int wwidth, wheight, twidth;
     
-    // Set the Icon
-    sf::Image icon;
-    if (!icon.loadFromFile("icon.png")) {
-        return EXIT_FAILURE;
+    if (tilefile.is_open()){
+        tilefile >> texturefile;
+        tilefile >> wwidth;
+        tilefile >> wheight;
+        tilefile >> twidth;
     }
-    window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
     
-//    // Load a sprite to display
-//    sf::Texture texture;
-//    if (!texture.loadFromFile("cute_image.jpg")) {
-//        return EXIT_FAILURE;
-//    }
-//    sf::Sprite sprite(texture);
-//    
-//    // Create a graphical text to display
-//    sf::Font font;
-//    if (!font.loadFromFile("sansation.ttf")) {
-//        return EXIT_FAILURE;
-//    }
-//    sf::Text text("Hello SFML", font, 50);
-//    text.setColor(sf::Color::Black);
-//    
-//    // Load a music to play
-//    sf::Music music;
-//    if (!music.openFromFile("nice_music.ogg")) {
-//        return EXIT_FAILURE;
-//    }
-//    
-//    // Play the music
-//    music.play();
-//    
-    // Start the game loop
+    sf::Texture worldtexture;
+    worldtexture.loadFromFile(texturefile);
     
-    int gridsize[2] {20, 15};
+    for (int x = 0; x < wheight; x++){
+        for (int y = 0; y < wwidth; y++){
+            std::string str;
+            tilefile >> str;
+            sf::Vector2i pos((str[0] - '0') * twidth, (str[2] - '0') * twidth);
+            sf::Sprite cursprite;
+            cursprite.setTexture(worldtexture);
+            cursprite.setTextureRect(sf::IntRect(pos.x, pos.y, twidth, twidth));
+            cursprite.setPosition(x * twidth, y * twidth);
+            blocks[x][y] = Block((str[0] - '0') * 10 + (str[2] - '0'), cursprite);
+        }
+    }
     
-    sf::Texture tileTexture;
-    sf::Sprite tiles;
-    
-    sf::Vector2i map[100][100];
-    sf::Vector2i loadCounter = sf::Vector2i(0,0);
-    World myworld;
-    myworld.load("world1.txt");
-    
-//    if (openfile.is_open())
-//    {
-//        tileTexture.loadFromFile(tileLocation);
-//        tiles.setTexture(tileTexture);
-//        while (!openfile.eof())
-//        {
-//            std::string str;
-//            openfile >> str;
-//            char x = str[0];
-//            char y = str[2];
-//            if (!isdigit(x) || !isdigit(y))
-//            {
-//                map[loadCounter.x][loadCounter.y] = sf::Vector2i(-1, -1 );
-//            }
-//            else
-//            {
-//                map[loadCounter.x][loadCounter.y] = sf::Vector2i(x - '0', y - '0');
-//            }
-//            if (openfile.peek() == '\n')
-//            {
-//                loadCounter.x = 0;
-//                loadCounter.y++;
-//            }
-//            else
-//                loadCounter.x++;
-//        }
-//        loadCounter.y++;
-//    }
-    
-//    while (window.isOpen())
-//    {
-//        // Process events
-//        sf::Event event;
-//        while (window.pollEvent(event))
-//        {
-//            // Close window: exit
-//            if (event.type == sf::Event::Closed) {
-//                window.close();
-//            }
-//            
-//            // Escape pressed: exit
-//            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
-//                window.close();
-//            }
-//        }
-//        
-//        // Clear screen
-//        window.clear(sf::Color::White);
-//
-//        
-//        for (int i = 0; i < tproportions[0]; i++)
-//        {
-//            for (int j = 0; j < tproportions[1]; j++)
-//            {
-//                if (map[i][j].x != -1 && map[i][j].y != -1)
-//                {
-//                    tiles.setPosition(i * 40, j * 40);
-//                    tiles.setTextureRect(sf::IntRect(map[i][j].x * 40, map[i][j].y * 40, 40, 40));
-//                    window.draw(tiles);
-//                }
-//            }
-//        }
-//        
-//        // Update the window
-//        window.display();
-//    }
-    
+    // Main Loop
+    sf::Event event;
+    while (window.isOpen()){
+        while (window.pollEvent(event)){
+            if (event.type == sf::Event::Closed) {
+                window.close();
+            }
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
+                window.close();
+            }
+        }
+        
+        //Render Tilemap
+        
+        for (int x = 0; x < wheight; x++){
+            for (int y = 0; y < wwidth; y++){
+                window.draw(blocks[x][y].getSprite());
+            }
+        }
+        
+        window.display();
+    }
+    return EXIT_SUCCESS;
 }

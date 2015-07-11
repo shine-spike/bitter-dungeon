@@ -8,15 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		E23D42A11B4A0102004BBCC8 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E23D42A01B4A0102004BBCC8 /* main.cpp */; };
-		E28F8B591B4A654000DC85CD /* world.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E28F8B571B4A654000DC85CD /* world.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E23D429D1B4A0102004BBCC8 /* bitter-dungeon */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "bitter-dungeon"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E23D42A01B4A0102004BBCC8 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		E28F8B551B4A59A700DC85CD /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Resources; path = "bitter-dungeon/Resources"; sourceTree = "<group>"; };
-		E28F8B571B4A654000DC85CD /* world.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = world.cpp; sourceTree = "<group>"; };
-		E28F8B581B4A654000DC85CD /* world.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = world.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +48,6 @@
 			isa = PBXGroup;
 			children = (
 				E23D42A01B4A0102004BBCC8 /* main.cpp */,
-				E28F8B571B4A654000DC85CD /* world.cpp */,
-				E28F8B581B4A654000DC85CD /* world.h */,
 			);
 			path = "bitter-dungeon";
 			sourceTree = "<group>";
@@ -112,7 +107,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E28F8B591B4A654000DC85CD /* world.cpp in Sources */,
 				E23D42A11B4A0102004BBCC8 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
