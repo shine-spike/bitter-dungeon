@@ -9,3 +9,5 @@
 #include "world.h"
 
 class World;
+
+class Block;

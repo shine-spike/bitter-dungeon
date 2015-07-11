@@ -25,13 +25,13 @@
 #include <world.h>
 
 
-constexpr int windowWidth = 800, windowHeight = 600;
+constexpr int windowWidth = 640, windowHeight = 640;
 
 int main(int argc, char const** argv)
 {
     // Create the main window
-    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
-    window.setFramerateLimit(60);
+    sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Dungeon");
+    window.setFramerateLimit(30);
     window.setVerticalSyncEnabled(true);
     
     // Set the Icon
