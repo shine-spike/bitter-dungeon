@@ -12,7 +12,7 @@
 
 /* Begin PBXFileReference section */
 		E23D429D1B4A0102004BBCC8 /* bitter-dungeon */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "bitter-dungeon"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E23D42A01B4A0102004BBCC8 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		E23D42A01B4A0102004BBCC8 /* main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		E28F8B551B4A59A700DC85CD /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Resources; path = "bitter-dungeon/Resources"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -211,6 +211,10 @@
 		E23D42AA1B4A0103004BBCC8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/scratch/Downloads/SFML-2.3-osx-clang-universal/Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -218,6 +222,10 @@
 		E23D42AB1B4A0103004BBCC8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/scratch/Downloads/SFML-2.3-osx-clang-universal/Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

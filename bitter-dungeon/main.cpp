@@ -113,32 +113,32 @@ int main(int argc, char const** argv)
     Block blocks[max_dimension][max_dimension];
     int wwidth, wheight, twidth;
     sf::Texture worldtexture;
-        std::ifstream tilefile("world1.txt");
-        std::string texturefile;
-        
-        if (tilefile.is_open()){
-            tilefile >> texturefile;
-            tilefile >> wwidth;
-            tilefile >> wheight;
-            tilefile >> twidth;
-        }
-        
-        worldtexture.loadFromFile(texturefile);
-        for (int x = 0; x < wheight; x++){
-            for (int y = 0; y < wwidth; y++){
-                std::string str;
-                tilefile >> str;
-                sf::Vector2i pos((str[0] - '0') * twidth, (str[1] - '0') * twidth);
-                sf::Sprite cursprite;
-                cursprite.setTexture(worldtexture);
-                cursprite.setOrigin(twidth/2, twidth/2);
-                cursprite.setTextureRect(sf::IntRect(pos.x, pos.y, twidth, twidth));
-                cursprite.setPosition((y + 0.5) * twidth, (x + 0.5) * twidth);
-                blocks[x][y] = Block((str[0] - '0') * 10 + (str[1] - '0'), cursprite);
-            }
-        }
+    std::ifstream tilefile("world1.txt");
+    std::string texturefile;
     
+    if (tilefile.is_open()){
+        tilefile >> texturefile;
+        tilefile >> wwidth;
+        tilefile >> wheight;
+        tilefile >> twidth;
+    }
     
+    worldtexture.loadFromFile(texturefile);
+    for (int x = 0; x < wheight; x++){
+        for (int y = 0; y < wwidth; y++){
+            std::string str;
+            tilefile >> str;
+            sf::Vector2i pos((str[0] - '0') * twidth, (str[1] - '0') * twidth);
+            sf::Sprite cursprite;
+            cursprite.setTexture(worldtexture);
+            cursprite.setOrigin(twidth/2, twidth/2);
+            cursprite.setTextureRect(sf::IntRect(pos.x, pos.y, twidth, twidth));
+            cursprite.setPosition((y + 0.5) * twidth, (x + 0.5) * twidth);
+            blocks[x][y] = Block((str[0] - '0') * 10 + (str[1] - '0'), cursprite);
+        }
+    }
+
+
     // Create the Main Character
     sf::Texture mctexture;
     mctexture.loadFromFile("mc.png");
